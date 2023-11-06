@@ -2,6 +2,11 @@
 cmake_minimum_required(VERSION 3.20)
 # CMake version compatibility. This allows to future-proof implementations and easily update
 # when bumping cmake_minimum_required
+# Enable using return(PROPAGATE)
+# TODO: Remove when cmake 3.25 is commonly distributed
+if (POLICY CMP0140)
+	cmake_policy(SET CMP0140 NEW)
+endif ()
 
 #[==============================================================================================[
 #                                   Basic project definition                                   #
@@ -68,6 +73,14 @@ set(BUILD_SHARED_LIBS ${TEMPLATE_SHARED_LIBS})
 #                                       External packages                                       #
 ]==============================================================================================]
 
+FetchContent_Declare(fmt
+		GIT_REPOSITORY https://github.com/fmtlib/fmt
+		GIT_TAG master
+		FIND_PACKAGE_ARGS CONFIG
+)
+
+FetchContent_MakeAvailable(fmt)
+
 feature_summary(
 		FILENAME ${CMAKE_CURRENT_BINARY_DIR}/Template.info
 		VAR Template_Info
@@ -85,6 +98,24 @@ message(STATUS ${Template_Info})
 ]==============================================================================================]
 
 # Main project
+add_executable(Template_Hello)
+set_target_properties(Template_Hello PROPERTIES
+		EXPORT_NAME Hello
+		OUTPUT_NAME hello
+)
+add_executable(Template::Hello ALIAS Template_Hello)
+add_library(Template_Template)
+set_target_properties(Template_Template PROPERTIES
+		VERSION ${PROJECT_VERSION}
+		SOVERSION ${PROJECT_VERSION_MAJOR}
+		EXPORT_NAME Template
+		OUTPUT_NAME template
+)
+add_library(Template::Template ALIAS Template_Template)
+# Main definitions inside src
+add_subdirectory(src)
+
+# Testing
 
 #[==============================================================================================[
 #                                       Install or Export                                       #
