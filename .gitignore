@@ -1,5 +1,6 @@
 ## CMake patterns
 CMakeUserPresets.json
+compile_commands.json
 
 ## Other common pattern
 build/

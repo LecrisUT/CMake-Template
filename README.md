@@ -36,9 +36,6 @@ This modern design ensures:
 - The CMake components can be documented using a [`sphinx`][sphinx]
   documentation engine.
 
-[cmake-presets]: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
-[sphinx]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
-
 ### Modern CI tools
 
 The CI tools available are constantly evolving, but broadly they cover:
@@ -53,8 +50,6 @@ The CI tools available are constantly evolving, but broadly they cover:
 - [`sphinx`][sphinx] documentation
 - Static code analysis
 
-[pre-commit]: https://pre-commit.com/
-
 ### Packaging and downstream tools
 
 In this template we focus on packaging to Fedora due to their vast CI tools:
@@ -64,14 +59,17 @@ In this template we focus on packaging to Fedora due to their vast CI tools:
 - [`tmt`][tmt] and [testing-farm]: Used to test your project as if it has been
   installed and run locally
 
-[packit]: https://packit.dev
-[copr]: https://copr.fedorainfracloud.org/
-[testing-farm]: https://docs.testing-farm.io/Testing%20Farm/0.1/index.html
-[Fedora]: https://src.fedoraproject.org/
-[tmt]: https://tmt.readthedocs.io/en/stable/
-
 ## License
 
 This template project is licensed under MIT license. Please update the
 [`LICENSE`](LICENSE) file after using this template. You may re-license your
 project as you wish after using this template.
+
+[cmake-presets]: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
+[copr]: https://copr.fedorainfracloud.org/
+[fedora]: https://src.fedoraproject.org/
+[packit]: https://packit.dev
+[pre-commit]: https://pre-commit.com/
+[sphinx]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
+[testing-farm]: https://docs.testing-farm.io/Testing%20Farm/0.1/index.html
+[tmt]: https://tmt.readthedocs.io/en/stable/
