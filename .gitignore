@@ -1,0 +1,7 @@
+## CMake patterns
+CMakeUserPresets.json
+
+## Other common pattern
+build/
+# Jetbrains default
+cmake-build-*/
