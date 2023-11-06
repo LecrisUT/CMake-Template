@@ -1,0 +1,79 @@
+specfile_path: .distro/cmake-template.spec
+
+# add or remove files that should be synced
+files_to_sync:
+  - src: .distro/cmake-template.spec
+    dest: cmake-template.spec
+  - .packit.yaml
+  - src: .distro/cmake-template.rpmlintrc
+    dest: cmake-template.rpmlintrc
+  # tmt setup
+  - src: .distro/.fmf/
+    dest: .fmf/
+  - src: .distro/plans/
+    dest: plans/
+    filters:
+      - "- main.fmf.dist-git"
+  - src: .distro/plans/main.fmf.dist-git
+    dest: plans/main.fmf
+  - .packit.yaml
+
+upstream_package_name: CMake-Template
+downstream_package_name: cmake-template
+
+update_release: false
+upstream_tag_template: v{version}
+
+jobs:
+  - job: copr_build
+    trigger: pull_request
+    owner: lecris
+    project: cmake-template
+    targets:
+      - fedora-all-x86_64
+      - fedora-all-aarch64
+      - epel-9-x86_64
+      - epel-9-aarch64
+  - job: tests
+    trigger: pull_request
+    targets:
+      - fedora-all-x86_64
+      - fedora-all-aarch64
+      - epel-9-x86_64
+      - epel-9-aarch64
+    fmf_path: .distro
+  - job: copr_build
+    trigger: commit
+    branch: main
+    owner: lecris
+    project: nightly
+    targets:
+      - fedora-all-x86_64
+      - fedora-all-aarch64
+      - epel-9-x86_64
+      - epel-9-aarch64
+  - job: tests
+    trigger: commit
+    branch: main
+    targets:
+      - fedora-all-x86_64
+      - fedora-all-aarch64
+      - epel-9-x86_64
+      - epel-9-aarch64
+    fmf_path: .distro
+    ## Uncomment when released downstream
+#  - job: propose_downstream
+#    trigger: release
+#    dist_git_branches:
+#      - fedora-rawhide
+#      - epel-9
+#  - job: koji_build
+#    trigger: commit
+#    dist_git_branches:
+#      - fedora-all
+#      - epel-9
+#  - job: bodhi_update
+#    trigger: commit
+#    dist_git_branches:
+#      - fedora-branched
+#      - epel-9
