@@ -116,6 +116,10 @@ add_library(Template::Template ALIAS Template_Template)
 add_subdirectory(src)
 
 # Testing
+if (TEMPLATE_TESTS)
+	enable_testing()
+	add_subdirectory(test)
+endif ()
 
 #[==============================================================================================[
 #                                       Install or Export                                       #
