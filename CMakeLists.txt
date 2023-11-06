@@ -124,3 +124,62 @@ endif ()
 #[==============================================================================================[
 #                                       Install or Export                                       #
 ]==============================================================================================]
+
+# Installation
+if (TEMPLATE_INSTALL)
+	# pkg-config files
+	configure_file(cmake/template.pc.in template.pc @ONLY)
+	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/template.pc
+			DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+			COMPONENT Template_Development
+	)
+
+	# cmake export files
+	write_basic_package_version_file(
+			${CMAKE_CURRENT_BINARY_DIR}/TemplateConfigVersion.cmake
+			VERSION ${PROJECT_VERSION}
+			COMPATIBILITY SameMajorVersion
+	)
+	configure_package_config_file(
+			cmake/TemplateConfig.cmake.in
+			${CMAKE_CURRENT_BINARY_DIR}/TemplateConfig.cmake
+			INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Template
+	)
+	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/TemplateConfigVersion.cmake
+			${CMAKE_CURRENT_BINARY_DIR}/TemplateConfig.cmake
+			DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Template
+			COMPONENT Template_Development
+	)
+
+	export(EXPORT TemplateTargets
+			FILE TemplateTargets.cmake
+			NAMESPACE Template::
+	)
+	install(EXPORT TemplateTargets
+			FILE TemplateTargets.cmake
+			NAMESPACE Template::
+			DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Template
+			COMPONENT Template_Development
+	)
+endif ()
+
+# Make project available for FetchContent
+if(NOT PROJECT_IS_TOP_LEVEL)
+	# Propagate variables
+	if (CMAKE_VERSION VERSION_LESS 3.25)
+		# TODO: Remove when cmake 3.25 is commonly distributed
+		set(Template_VERSION ${Template_VERSION} PARENT_SCOPE)
+		set(Template_VERSION_MAJOR ${Template_VERSION_MAJOR} PARENT_SCOPE)
+		set(Template_VERSION_MINOR ${Template_VERSION_MINOR} PARENT_SCOPE)
+		set(Template_VERSION_PATCH ${Template_VERSION_PATCH} PARENT_SCOPE)
+		set(Template_VERSION_TWEAK ${Template_VERSION_TWEAK} PARENT_SCOPE)
+	else ()
+		return(PROPAGATE
+				Template_VERSION
+				Template_VERSION_MAJOR
+				Template_VERSION_MINOR
+				Template_VERSION_PATCH
+				Template_VERSION_TWEAK
+		)
+	endif ()
+endif ()
