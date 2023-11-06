@@ -1,7 +1,9 @@
 #include <iostream>
 
+#include <fmt/core.h>
+
 #include "template.h"
 
 void tmpl::hello() {
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << fmt::format("Hello, {}!", "World") << std::endl;
 }
