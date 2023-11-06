@@ -76,7 +76,7 @@ set(BUILD_SHARED_LIBS ${TEMPLATE_SHARED_LIBS})
 FetchContent_Declare(fmt
 		GIT_REPOSITORY https://github.com/fmtlib/fmt
 		GIT_TAG master
-		FIND_PACKAGE_ARGS CONFIG
+		FIND_PACKAGE_ARGS MODULE
 )
 
 FetchContent_MakeAvailable(fmt)
