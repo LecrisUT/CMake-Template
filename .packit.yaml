@@ -32,17 +32,17 @@ jobs:
     owner: lecris
     project: cmake-template
     targets:
-      - fedora-all-x86_64
-      - fedora-all-aarch64
-      - epel-9-x86_64
-      - epel-9-aarch64
+      - fedora-38-x86_64
+      - fedora-38-aarch64
+      - fedora-development-x86_64
+      - fedora-development-aarch64
   - job: tests
     trigger: pull_request
     targets:
-      - fedora-all-x86_64
-      - fedora-all-aarch64
-      - epel-9-x86_64
-      - epel-9-aarch64
+      - fedora-38-x86_64
+      - fedora-38-aarch64
+      - fedora-development-x86_64
+      - fedora-development-aarch64
     fmf_path: .distro
   - job: copr_build
     trigger: commit
@@ -50,18 +50,18 @@ jobs:
     owner: lecris
     project: nightly
     targets:
-      - fedora-all-x86_64
-      - fedora-all-aarch64
-      - epel-9-x86_64
-      - epel-9-aarch64
+      - fedora-38-x86_64
+      - fedora-38-aarch64
+      - fedora-development-x86_64
+      - fedora-development-aarch64
   - job: tests
     trigger: commit
     branch: main
     targets:
-      - fedora-all-x86_64
-      - fedora-all-aarch64
-      - epel-9-x86_64
-      - epel-9-aarch64
+      - fedora-38-x86_64
+      - fedora-38-aarch64
+      - fedora-development-x86_64
+      - fedora-development-aarch64
     fmf_path: .distro
     ## Uncomment when released downstream
 #  - job: propose_downstream
