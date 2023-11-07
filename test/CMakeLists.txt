@@ -121,7 +121,12 @@ function(Template_add_test test)
 	)
 endfunction()
 
-add_subdirectory(unit)
-add_subdirectory(package)
+foreach (test_type IN ITEMS
+		unit
+		functional
+		package
+)
+	add_subdirectory(${test_type})
+endforeach ()
 
 catch_discover_tests(test-suite)
