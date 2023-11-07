@@ -15,6 +15,10 @@
         "TEMPLATE_TESTS": {
           "type": "BOOL",
           "value": true
+        },
+        "TEMPLATE_TEST_COVERAGE": {
+          "type": "BOOL",
+          "value": true
         }
       },
       "errors": {

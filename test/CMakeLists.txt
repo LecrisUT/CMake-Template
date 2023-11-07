@@ -15,11 +15,24 @@ set(CMAKE_CXX_EXTENSIONS ON)
 #                                            Options                                            #
 ]==============================================================================================]
 
+include(CMakeDependentOption)
+include(FeatureSummary)
+
+cmake_dependent_option(TEMPLATE_TEST_COVERAGE "Template: Test with coverage" OFF "TEMPLATE_TESTS;Template_IS_TOP_LEVEL" OFF)
+add_feature_info(Coverage TEMPLATE_TEST_COVERAGE "Compile with test coverage")
+mark_as_advanced(TEMPLATE_TEST_COVERAGE)
+
 #[==============================================================================================[
 #                                     Project configuration                                     #
 ]==============================================================================================]
 
 include(FetchContent)
+
+if (TEMPLATE_TEST_COVERAGE)
+	target_compile_options(Template_Template PRIVATE --coverage)
+	target_compile_options(Template_Hello PRIVATE --coverage)
+	target_link_options(Template_Template PUBLIC --coverage)
+endif ()
 
 #[==============================================================================================[
 #                                       External packages                                       #

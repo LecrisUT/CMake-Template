@@ -38,6 +38,16 @@ jobs:
         uses: lukka/run-cmake@v10.3
         with:
           workflowPreset: "${{ matrix.toolchain }}-ci"
+      - name: Get lcov data
+        run: |
+          lcov -c -d cmake-build-*/ -o coverage.info --include "$(pwd)/src/*"
+        # TODO: Disabled coverage on non-gcc toolchains. Not sure why it is broken
+        if: matrix.toolchain == 'gcc'
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage.info
+        if: matrix.toolchain == 'gcc'
   pass:
     needs: [ tests ]
     runs-on: ubuntu-latest
