@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CMake-Template-dev"
+version = "0.0.0"
+description = "Development environment for CMake Template"
+readme = "README.md"
+license = { file = "LICENSE" }
+
+
+[project.optional-dependencies]
+docs = [
+    "sphinx >= 7.0",
+    "furo",
+    "sphinx-design",
+    "sphinx-togglebutton",
+    "myst-parser",
+    "breathe",
+]
+dev = [
+    "pre-commit",
+]
+
+[tool.setuptools]
+packages = []

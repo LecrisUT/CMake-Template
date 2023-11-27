@@ -1,5 +1,7 @@
 # Modern CMake example project
 
+<!-- SPHINX-START -->
+
 An example CMake project highlighting various modern practices. Feel free to
 use this project as a template for bootstrapping or modernizing your own CMake
 project.
@@ -64,6 +66,8 @@ In this template we focus on packaging to Fedora due to their vast CI tools:
 This template project is licensed under MIT license. Please update the
 [`LICENSE`](LICENSE) file after using this template. You may re-license your
 project as you wish after using this template.
+
+<!-- SPHINX-END -->
 
 [cmake-presets]: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
 [copr]: https://copr.fedorainfracloud.org/
