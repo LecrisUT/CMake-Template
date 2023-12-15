@@ -23,6 +23,8 @@ repos:
         additional_dependencies:
           - mdformat-gfm
           - mdformat-tables
+        # Disable because of sphinx compatibility
+        stages: [ manual ]
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.21.0
     hooks:

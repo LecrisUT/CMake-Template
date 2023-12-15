@@ -61,13 +61,13 @@ In this template we focus on packaging to Fedora due to their vast CI tools:
 - [`tmt`][tmt] and [testing-farm]: Used to test your project as if it has been
   installed and run locally
 
+<!-- SPHINX-END -->
+
 ## License
 
 This template project is licensed under MIT license. Please update the
 [`LICENSE`](LICENSE) file after using this template. You may re-license your
 project as you wish after using this template.
-
-<!-- SPHINX-END -->
 
 [cmake-presets]: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
 [copr]: https://copr.fedorainfracloud.org/
