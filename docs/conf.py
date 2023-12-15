@@ -10,7 +10,7 @@ extensions = [
     "sphinx_prompt",
     "breathe",
     "sphinx.ext.intersphinx",
-    "hoverxref.extension",
+    "sphinx_tippy",
 ]
 
 templates_path = []
@@ -37,13 +37,12 @@ intersphinx_mapping = {
     "tmt": ("https://tmt.readthedocs.io/en/stable", None),
 }
 
-hoverxref_auto_ref = True
-hoverxref_intersphinx = [
+tippy_rtd_urls = [
     ## Only works with RTD hosted intersphinx
-    # "cmake",
-    # "sphinx",
-    "rtd",
-    "tmt",
+    # "https://cmake.org/cmake/help/latest",
+    # "https://www.sphinx-doc.org/en/master",
+    "https://docs.readthedocs.io/en/stable",
+    "https://tmt.readthedocs.io/en/stable",
 ]
 
 copybutton_exclude = ".linenos, .gp, .go"
