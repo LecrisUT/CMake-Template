@@ -19,6 +19,8 @@ docs = [
     "myst-parser",
     "breathe",
     "sphinx-hoverxref",
+    "sphinx-copybutton",
+    "sphinx-prompt",
 ]
 dev = [
     "pre-commit",

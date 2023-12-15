@@ -6,6 +6,8 @@ extensions = [
     "myst_parser",
     "sphinx_design",
     "sphinx_togglebutton",
+    "sphinx_copybutton",
+    "sphinx_prompt",
     "breathe",
     "sphinx.ext.intersphinx",
     "hoverxref.extension",
@@ -43,3 +45,5 @@ hoverxref_intersphinx = [
     "rtd",
     "tmt",
 ]
+
+copybutton_exclude = ".linenos, .gp, .go"
