@@ -1,5 +1,7 @@
 # Modern CMake example project
 
+<!-- SPHINX-START -->
+
 An example CMake project highlighting various modern practices. Feel free to
 use this project as a template for bootstrapping or modernizing your own CMake
 project.
@@ -58,6 +60,8 @@ In this template we focus on packaging to Fedora due to their vast CI tools:
   tests on [testing-farm], and make pull-requests downstream (e.g. on [Fedora])
 - [`tmt`][tmt] and [testing-farm]: Used to test your project as if it has been
   installed and run locally
+
+<!-- SPHINX-END -->
 
 ## License
 
