@@ -8,6 +8,7 @@ caption: Contents
 hidden: true
 glob: true
 ---
+self
 guides/index.md
 ```
 
