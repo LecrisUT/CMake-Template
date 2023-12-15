@@ -18,6 +18,7 @@ docs = [
     "sphinx-togglebutton",
     "myst-parser",
     "breathe",
+    "sphinx-hoverxref",
 ]
 dev = [
     "pre-commit",

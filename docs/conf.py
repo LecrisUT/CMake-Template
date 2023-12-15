@@ -8,6 +8,7 @@ extensions = [
     "sphinx_togglebutton",
     "breathe",
     "sphinx.ext.intersphinx",
+    "hoverxref.extension",
 ]
 
 templates_path = []
@@ -33,3 +34,12 @@ intersphinx_mapping = {
     "rtd": ("https://docs.readthedocs.io/en/stable", None),
     "tmt": ("https://tmt.readthedocs.io/en/stable", None),
 }
+
+hoverxref_auto_ref = True
+hoverxref_intersphinx = [
+    ## Only works with RTD hosted intersphinx
+    # "cmake",
+    # "sphinx",
+    "rtd",
+    "tmt",
+]
