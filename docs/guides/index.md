@@ -7,5 +7,5 @@ titlesonly: true
 caption: Guides
 glob: true
 ---
-*
+*/index
 ```
