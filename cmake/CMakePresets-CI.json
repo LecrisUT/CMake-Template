@@ -15,6 +15,10 @@
         "TEMPLATE_TESTS": {
           "type": "BOOL",
           "value": true
+        },
+        "CMAKE_EXPORT_COMPILE_COMMANDS": {
+          "type": "BOOL",
+          "value": true
         }
       },
       "errors": {
@@ -250,6 +254,18 @@
           "label": "functional"
         }
       }
+    },
+    {
+      "name": "coverage-all",
+      "displayName": "Full coverage tests",
+      "inherits": [
+        "coverage-base"
+      ],
+      "filter": {
+        "include": {
+          "label": ".*"
+        }
+      }
     }
   ],
   "workflowPresets": [
@@ -376,6 +392,24 @@
         {
           "type": "test",
           "name": "coverage-functional"
+        }
+      ]
+    },
+    {
+      "name": "coverage-all",
+      "displayName": "Full coverage tests",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "coverage"
+        },
+        {
+          "type": "build",
+          "name": "coverage"
+        },
+        {
+          "type": "test",
+          "name": "coverage-all"
         }
       ]
     }

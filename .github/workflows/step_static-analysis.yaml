@@ -10,30 +10,22 @@ jobs:
   sonar-cloud:
     name: SonarCloud
     runs-on: ubuntu-latest
-    env:
-      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python for gcovr
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-      - name: install gcovr
-        run: |
-          pip install gcovr
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v2
-      - name: Run cmake/ctest with sonar build-wrapper
-        run: |
-          cmake --preset gcc-ci --fresh -G "Unix Makefiles"
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build --preset gcc-ci
-          ctest --preset gcc-ci
-          gcovr --sonarqube > coverage.xml
+      - uses: lukka/get-cmake@latest
+      - name: Run CMake configuration for ${{ matrix.toolchain }} toolchain
+        uses: lukka/run-cmake@v10.3
+        with:
+          workflowPreset: coverage-all
+      - name: Convert output to sonarqube
+        run: pipx run gcovr --sonarqube > coverage.xml
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
-            --define sonar.coverageReportPaths=coverage.xml
+        run: >
+          sonar-scanner
+          --define sonar.cfamily.compile-commands="$(echo cmake-build-*)/compile_commands.json"
+          --define sonar.coverageReportPaths=coverage.xml
