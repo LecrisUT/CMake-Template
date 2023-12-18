@@ -8,6 +8,7 @@ hidden: true
 glob: true
 ---
 who-is-the-user
+download
 ```
 
 This is a general guide for how a user can interact with modern CMake project
