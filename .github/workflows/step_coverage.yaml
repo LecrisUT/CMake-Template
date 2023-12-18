@@ -1,5 +1,4 @@
-name: coverage
-run-name: Run coverage tests
+name: 👀 coverage
 
 on:
   workflow_call:

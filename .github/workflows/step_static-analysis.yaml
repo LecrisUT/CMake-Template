@@ -1,12 +1,14 @@
 name: static-analysis
+
 on:
   workflow_call:
     secrets:
       SONAR_TOKEN:
         required: true
+
 jobs:
   sonar-cloud:
-    name: Analyze with SonarCloud
+    name: SonarCloud
     runs-on: ubuntu-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed

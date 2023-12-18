@@ -1,4 +1,7 @@
 name: CI
+run-name: >
+  CI (${{ github.event_name }})
+  ${{ github.event_name == 'pull_request' && format('PR#{0}', github.event.number) || '' }}
 
 on:
   workflow_dispatch:
@@ -23,10 +26,12 @@ jobs:
     uses: ./.github/workflows/step_test.yaml
 
   docs:
+    name: 📘 docs
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_docs.yaml
 
   coverage:
+    name: 👀 coverage
     needs: [ tests ]
     uses: ./.github/workflows/step_coverage.yaml
 
@@ -37,6 +42,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   pass:
+    name: ✅ Pass
     needs: [ pre-commit, tests, coverage, docs, static-analysis ]
     runs-on: ubuntu-latest
     steps:

@@ -1,5 +1,4 @@
 name: test
-run-name: Run tests
 
 on:
   workflow_call:
@@ -9,7 +8,7 @@ permissions:
 
 jobs:
   tests:
-    name: Check ${{ matrix.toolchain }} toolchain
+    name: 🛠️ ${{ matrix.toolchain }}
     runs-on: ${{ matrix.os || 'ubuntu-latest' }}
     container: ${{ !matrix.os && 'ghcr.io/lecrisut/dev-env:main' || '' }}
     continue-on-error: ${{ matrix.experimental || false }}

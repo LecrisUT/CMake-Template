@@ -1,5 +1,5 @@
-name: release
-run-name: Release
+name: 🚀 release
+run-name: Release ${{ github.ref_name }}
 
 on:
   push:
@@ -17,10 +17,12 @@ jobs:
     uses: ./.github/workflows/step_test.yaml
 
   docs:
+    name: 📘 docs
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_docs.yaml
 
   tests-pass:
+    name: ✅ Pass
     needs: [ pre-commit, tests, docs ]
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +34,7 @@ jobs:
 
   release:
     needs: [ tests-pass ]
-    name: Create release
+    name: 🚀 Create release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

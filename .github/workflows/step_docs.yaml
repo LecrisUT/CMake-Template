@@ -1,5 +1,4 @@
-name: docs
-run-name: Run doc checks
+name: 📘 docs
 
 on:
   workflow_call:
@@ -9,7 +8,7 @@ permissions:
 
 jobs:
   sphinx:
-    name: Sphinx ${{ matrix.builder }}
+    name: Sphinx (${{ matrix.builder }})
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental || false }}
     strategy:

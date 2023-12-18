@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   pre-commit:
-    name: Check pre-commit
+    name: pre-commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
