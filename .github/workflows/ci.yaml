@@ -26,6 +26,10 @@ jobs:
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_docs.yaml
 
+  coverage:
+    needs: [ tests ]
+    uses: ./.github/workflows/step_coverage.yaml
+
   static-analysis:
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_static-analysis.yaml
@@ -33,7 +37,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   pass:
-    needs: [ pre-commit, tests, docs, static-analysis ]
+    needs: [ pre-commit, tests, coverage, docs, static-analysis ]
     runs-on: ubuntu-latest
     steps:
       - name: Check all CI jobs
