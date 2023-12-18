@@ -8,43 +8,37 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+"
 
 jobs:
+  # Run common tests that can change in time
+  pre-commit:
+    uses: ./.github/workflows/step_pre-commit.yaml
+
   tests:
+    needs: [ pre-commit ]
     uses: ./.github/workflows/step_test.yaml
-  pypi-wheel:
-    needs: [ tests ]
-    uses: ./.github/workflows/step_build-wheel.yaml
-  upload_pypi:
-    name: Upload to PyPI repository
-    needs: [ tests, pypi-wheel ]
+
+  docs:
+    needs: [ pre-commit ]
+    uses: ./.github/workflows/step_docs.yaml
+
+  tests-pass:
+    needs: [ pre-commit, tests, docs ]
     runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/project/spglib/
-    permissions:
-      id-token: write
     steps:
-      - uses: actions/download-artifact@v3
+      - name: Check all CI jobs
+        uses: re-actors/alls-green@release/v1
         with:
-          name: artifact
-          path: dist
-      - name: Publish package to TestPyPI
-        if: ${{ contains(github.ref, 'rc') }}
-        # TODO: Maybe we can move this to main PyPI since it is marked rc
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository_url: https://test.pypi.org/legacy/
-      - name: Publish package to PyPI
-        if: ${{ !contains(github.ref, 'rc') }}
-        uses: pypa/gh-action-pypi-publish@release/v1
+          jobs: ${{ toJSON(needs) }}
+    if: always()
+
   release:
-    needs: [ upload_pypi ]
+    needs: [ tests-pass ]
     name: Create release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: softprops/action-gh-release@v1
         with:
-          name: Spglib ${{ github.ref_name }}
+          name: Template ${{ github.ref_name }}
           draft: true
           prerelease: ${{ contains(github.ref, 'rc') }}
           generate_release_notes: true
