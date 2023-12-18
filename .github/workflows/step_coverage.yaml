@@ -1,0 +1,29 @@
+name: 👀 coverage
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  ctest:
+    name: ctest (${{ matrix.coverage }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        coverage: [ unit, functional ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lukka/get-cmake@latest
+      - name: Run CMake configuration for ${{ matrix.toolchain }} toolchain
+        uses: lukka/run-cmake@v10.3
+        with:
+          workflowPreset: coverage-${{ matrix.coverage }}
+      - name: Get lcov data
+        uses: danielealbano/lcov-action@v3
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage.info
+          flags: ${{ matrix.coverage }}-tests

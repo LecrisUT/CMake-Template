@@ -16,7 +16,7 @@
           "type": "BOOL",
           "value": true
         },
-        "TEMPLATE_TEST_COVERAGE": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": {
           "type": "BOOL",
           "value": true
         }
@@ -98,6 +98,20 @@
           "value": "clang++"
         }
       }
+    },
+    {
+      "name": "coverage",
+      "displayName": "Test coverage",
+      "inherits": [
+        "gcc-ci"
+      ],
+      "binaryDir": "cmake-build-ci-coverage",
+      "cacheVariables": {
+        "TEMPLATE_TEST_COVERAGE": {
+          "type": "BOOL",
+          "value": true
+        }
+      }
     }
   ],
   "buildPresets": [
@@ -148,6 +162,14 @@
         "ci-base"
       ],
       "configurePreset": "macos-ci"
+    },
+    {
+      "name": "coverage",
+      "displayName": "Test coverage",
+      "inherits": [
+        "ci-base"
+      ],
+      "configurePreset": "coverage"
     }
   ],
   "testPresets": [
@@ -200,6 +222,50 @@
         "ci-base"
       ],
       "configurePreset": "macos-ci"
+    },
+    {
+      "name": "coverage-base",
+      "hidden": true,
+      "inherits": [
+        "ci-base"
+      ],
+      "configurePreset": "coverage"
+    },
+    {
+      "name": "coverage-unit",
+      "displayName": "Coverage of unit tests",
+      "inherits": [
+        "coverage-base"
+      ],
+      "filter": {
+        "include": {
+          "label": "unit"
+        }
+      }
+    },
+    {
+      "name": "coverage-functional",
+      "displayName": "Coverage of functional tests",
+      "inherits": [
+        "coverage-base"
+      ],
+      "filter": {
+        "include": {
+          "label": "functional"
+        }
+      }
+    },
+    {
+      "name": "coverage-all",
+      "displayName": "Full coverage tests",
+      "inherits": [
+        "coverage-base"
+      ],
+      "filter": {
+        "include": {
+          "label": ".*"
+        }
+      }
     }
   ],
   "workflowPresets": [
@@ -290,6 +356,60 @@
         {
           "type": "test",
           "name": "macos-ci"
+        }
+      ]
+    },
+    {
+      "name": "coverage-unit",
+      "displayName": "Coverage of unit tests",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "coverage"
+        },
+        {
+          "type": "build",
+          "name": "coverage"
+        },
+        {
+          "type": "test",
+          "name": "coverage-unit"
+        }
+      ]
+    },
+    {
+      "name": "coverage-functional",
+      "displayName": "Coverage of functional tests",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "coverage"
+        },
+        {
+          "type": "build",
+          "name": "coverage"
+        },
+        {
+          "type": "test",
+          "name": "coverage-functional"
+        }
+      ]
+    },
+    {
+      "name": "coverage-all",
+      "displayName": "Full coverage tests",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "coverage"
+        },
+        {
+          "type": "build",
+          "name": "coverage"
+        },
+        {
+          "type": "test",
+          "name": "coverage-all"
         }
       ]
     }

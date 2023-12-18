@@ -1,5 +1,23 @@
 # Modern CMake example project
 
+[![CI Status][ci-badge]][ci-link]
+[![Codecov Status][codecov-badge]][codecov-link]
+[![SonarCloud Status][sonarcloud-badge]][sonarcloud-link]
+
+[![Documentation Status][rtd-badge]][rtd-link]
+![CMake Status][cmake-badge]
+
+[ci-badge]: https://github.com/LecrisUT/CMake-Template/actions/workflows/ci.yaml/badge.svg?branch=main&event=push
+[rtd-badge]: https://readthedocs.org/projects/lecrisut-cmake-template/badge/?version=latest
+[codecov-badge]: https://codecov.io/gh/LecrisUT/CMake-Template/graph/badge.svg?token=YAEN2SWB10
+[sonarcloud-badge]: https://sonarcloud.io/api/project_badges/measure?project=LecrisUT_CMake-Template&metric=alert_status
+[cmake-badge]: https://img.shields.io/badge/CMake-3.20-blue?logo=cmake
+
+[ci-link]: https://github.com/LecrisUT/CMake-Template/actions?query=branch%3Amain+event%3Apush
+[rtd-link]: https://lecrisut-cmake-template.readthedocs.io/en/latest/?badge=latest
+[codecov-link]: https://codecov.io/gh/LecrisUT/CMake-Template
+[sonarcloud-link]: https://sonarcloud.io/summary/new_code?id=LecrisUT_CMake-Template
+
 <!-- SPHINX-START -->
 
 An example CMake project highlighting various modern practices. Feel free to

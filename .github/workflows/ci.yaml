@@ -1,4 +1,7 @@
 name: CI
+run-name: >
+  CI (${{ github.event_name }})
+  ${{ github.event_name == 'pull_request' && format('PR#{0}', github.event.number) || '' }}
 
 on:
   workflow_dispatch:
@@ -6,6 +9,8 @@ on:
     branches: [ main ]
   push:
     branches: [ main ]
+  schedule:
+    - cron: 0 0 * * 3
 
 permissions:
   contents: read
@@ -22,18 +27,32 @@ jobs:
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_test.yaml
 
+  docs:
+    name: 📘 docs
+    needs: [ pre-commit ]
+    uses: ./.github/workflows/step_docs.yaml
+
+  coverage:
+    name: 👀 coverage
+    needs: [ tests ]
+    uses: ./.github/workflows/step_coverage.yaml
+    if: github.event_name != 'schedule'
+
   static-analysis:
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_static-analysis.yaml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    if: github.event_name != 'schedule'
 
   pass:
-    needs: [ pre-commit, tests, static-analysis ]
+    name: ✅ Pass
+    needs: [ pre-commit, tests, coverage, docs, static-analysis ]
     runs-on: ubuntu-latest
     steps:
       - name: Check all CI jobs
         uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
+          allowed-skips: coverage, static-analysis
     if: always()

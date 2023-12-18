@@ -142,4 +142,8 @@ foreach (test_type IN ITEMS
 	add_subdirectory(${test_type})
 endforeach ()
 
-catch_discover_tests(test-suite)
+catch_discover_tests(test-suite
+		# Manually hard-coding labels until upstream support is included
+		# https://github.com/catchorg/Catch2/pull/2690
+		PROPERTIES LABELS "unit"
+)
