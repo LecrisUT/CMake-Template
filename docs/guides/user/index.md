@@ -1,12 +1,11 @@
 # User guide
 
 ```{toctree}
----
-maxdepth: 2
-titlesonly: true
-hidden: true
-glob: true
----
+: maxdepth: 2
+: titlesonly: true
+: hidden: true
+: glob: true
+
 who-is-the-user
 download
 ```
