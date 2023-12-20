@@ -41,7 +41,7 @@ intersphinx_mapping = {
 }
 
 tippy_rtd_urls = [
-    ## Only works with RTD hosted intersphinx
+    # Only works with RTD hosted intersphinx
     # "https://cmake.org/cmake/help/latest",
     "https://www.sphinx-doc.org/en/master",
     "https://docs.readthedocs.io/en/stable",
@@ -51,3 +51,8 @@ tippy_rtd_urls = [
 ]
 
 copybutton_exclude = ".linenos, .gp, .go"
+
+linkcheck_ignore = [
+    # pkgs.org gives 402 Client Error: Payment Required
+    r"https://pkgs.org",
+]
