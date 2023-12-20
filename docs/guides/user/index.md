@@ -11,6 +11,7 @@ download
 configure
 build
 test
+install
 ```
 
 This is a general guide for how a user can interact with modern CMake project
