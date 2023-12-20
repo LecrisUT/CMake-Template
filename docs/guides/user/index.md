@@ -9,6 +9,7 @@
 who-is-the-user
 download
 configure
+build
 ```
 
 This is a general guide for how a user can interact with modern CMake project
