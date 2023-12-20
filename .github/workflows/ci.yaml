@@ -26,6 +26,8 @@ jobs:
   tests:
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_test.yaml
+    with:
+      mask-experimental: ${{ github.event_name == 'push' }}
 
   docs:
     name: 📘 docs
