@@ -4,14 +4,14 @@
 : maxdepth: 2
 : titlesonly: true
 : hidden: true
-: glob: true
 
 who-is-the-user
 download
-configure
+configure/index
 build
 test
 install
+troubleshooting
 ```
 
 This is a general guide for how a user can interact with modern CMake project

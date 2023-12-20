@@ -146,8 +146,8 @@ not, but on the other-hand, such information is used when consuming CMake's
 [homebrew]: https://brew.sh
 [pkgs.org]: https://pkgs.org
 
-[CMakeUserPreset]: configure.md#cmakeuserpresetsjson
-[configuration]: configure.md
+[CMakeUserPreset]: configure/index.md#cmakeuserpresetsjson
+[configuration]: configure/index.md
 
 [`find_package`]: inv:cmake:cmake:command#command:find_package
 [`FetchContent`/`find_package` integration]: inv:cmake:std:label#fetchcontent-find_package-integration-examples

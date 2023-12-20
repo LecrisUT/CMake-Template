@@ -1,5 +1,14 @@
 # Configuring the project
 
+```{toctree}
+: maxdepth: 1
+: titlesonly: true
+: hidden: true
+
+options
+import
+```
+
 The heart of a CMake project is the configure stage, where most of the user
 experience diverge between each user and their needs.
 
@@ -13,10 +22,10 @@ configuration options. The details of the configuration options standard
 themselves are covered in [configuration options] section.
 :::
 
-[source]: download.md#source-project
-[using `FetchContent`]: download.md#using-fetchcontent
-[importing projects]: TBD
-[configuration options]: TBD
+[source]: ../download.md#source-project
+[using `FetchContent`]: ../download.md#using-fetchcontent
+[importing projects]: import.md
+[configuration options]: options.md
 
 ## How do I configure the project?
 
@@ -224,4 +233,4 @@ aware of how these may affect the build.
 
 [^1]: <https://gitlab.kitware.com/cmake/cmake/-/issues/25363>
 
-[troubleshooting]: TBD
+[troubleshooting]: ../troubleshooting.md

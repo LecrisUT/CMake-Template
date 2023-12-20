@@ -26,6 +26,6 @@ In some project you would not be able to overwrite the installation path with
 [`CMAKE_INSTALL_PREFIX`] at the [configure] step.
 :::
 
-[configure]: configure.md
+[configure]: configure/index.md
 [`--prefix`]: inv:cmake:std:cmdoption#cmake--install.--prefix
 [`CMAKE_INSTALL_PREFIX`]: inv:cmake:cmake:variable#variable:CMAKE_INSTALL_PREFIX

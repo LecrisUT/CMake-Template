@@ -35,5 +35,5 @@ $ cmake --build ./build-dir -j
 Alternatively, set the [`CMAKE_BUILD_PARALLEL_LEVEL`] environment variable.
 
 [`-j`]: inv:cmake:std:cmdoption#cmake--build.--parallel
-[`configurePreset`]: configure.md#cmake-presets
+[`configurePreset`]: configure/index.md#cmake-presets
 [`CMAKE_BUILD_PARALLEL_LEVEL`]: inv:cmake:cmake:envvar#envvar:CMAKE_BUILD_PARALLEL_LEVEL
