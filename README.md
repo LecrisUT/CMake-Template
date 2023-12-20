@@ -11,7 +11,7 @@
 [rtd-badge]: https://readthedocs.org/projects/lecrisut-cmake-template/badge/?version=latest
 [codecov-badge]: https://codecov.io/gh/LecrisUT/CMake-Template/graph/badge.svg?token=YAEN2SWB10
 [sonarcloud-badge]: https://sonarcloud.io/api/project_badges/measure?project=LecrisUT_CMake-Template&metric=alert_status
-[cmake-badge]: https://img.shields.io/badge/CMake-3.20-blue?logo=cmake
+[cmake-badge]: https://img.shields.io/badge/CMake-3.20-blue?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMiIgdmlld0JveD0iMCAwIDU0NS41IDU0NS45Ij48cGF0aCBkPSJNNTQ2IDUzNCAyODIgOWwzOSA0MzQgMjI1IDkxeiIgZGF0YS1uYW1lPSJyZWQgcmlnaHQiIHN0eWxlPSJmaWxsOiNmMzI3MzU7c3Ryb2tlLXdpZHRoOjAiLz48cGF0aCBkPSJNNTI1IDU0NiAxNzAgNDAzIDEgNTQ2aDUyNHoiIGRhdGEtbmFtZT0iZ3JlZW4gYm90dG9tIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjA7ZmlsbDojM2VhZTJiIi8+PHBhdGggZD0iTTI2MyAwIDAgNTIybDI4OC0yNDRMMjYzIDB6IiBkYXRhLW5hbWU9ImJsdWUgbGVmdCIgc3R5bGU9ImZpbGw6IzAwNjhjNztzdHJva2Utd2lkdGg6MCIvPjxwYXRoIGQ9Im0yOTEgMjk5LTEwNSA4OSAxMTcgNDgtMTItMTM3eiIgZGF0YS1uYW1lPSJncmF5IGNlbnRlciIgc3R5bGU9ImZpbGw6I2RjZTNlYztzdHJva2Utd2lkdGg6MCIvPjwvc3ZnPg==
 
 [ci-link]: https://github.com/LecrisUT/CMake-Template/actions?query=branch%3Amain+event%3Apush
 [rtd-link]: https://lecrisut-cmake-template.readthedocs.io/en/latest/?badge=latest
