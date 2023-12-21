@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: WyriHaximus/github-action-get-previous-tag@v1
+        id: git-tag
+        with:
+         prefix: v
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v2
       - uses: lukka/get-cmake@latest
@@ -29,3 +35,4 @@ jobs:
           sonar-scanner
           --define sonar.cfamily.compile-commands="$(echo cmake-build-*)/compile_commands.json"
           --define sonar.coverageReportPaths=coverage.xml
+          --define sonar.projectVersion=${{ steps.git-tag.outputs.tag }}
