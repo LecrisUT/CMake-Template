@@ -29,10 +29,9 @@ jobs:
         run: pipx run gcovr --sonarqube > coverage.xml
       - name: Run sonar-scanner
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: >
           sonar-scanner
-          --define sonar.cfamily.compile-commands="$(echo cmake-build-*)/compile_commands.json"
+          --define sonar.cfamily.compile-commands=$(echo cmake-build-*)/compile_commands.json
           --define sonar.coverageReportPaths=coverage.xml
           --define sonar.projectVersion=${{ steps.git-tag.outputs.tag }}
