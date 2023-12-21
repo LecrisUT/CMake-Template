@@ -54,6 +54,8 @@ jobs:
       - fedora-38-aarch64
       - fedora-development-x86_64
       - fedora-development-aarch64
+    additional_repos:
+      - copr://@scikit-build/release
   - job: tests
     trigger: commit
     branch: main
