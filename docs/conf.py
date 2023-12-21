@@ -57,5 +57,8 @@ linkcheck_ignore = [
     # pkgs.org gives 402 Client Error: Payment Required
     r"https://pkgs.org",
 ]
+linkcheck_anchors_ignore_for_url = [
+    r"https://gitlab.kitware.com/.*",
+]
 
 todo_include_todos = True
