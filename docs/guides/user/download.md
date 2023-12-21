@@ -98,6 +98,8 @@ issues.
 
 ## Using `FetchContent`
 
+[//]: # (TODO: Synchronize with configure/import.md https://github.com/sphinx-doc/sphinx/issues/11807)
+
 :::{admonition} Tl;dr
 ```cmake
 include(FetchContent)
@@ -117,12 +119,7 @@ one downstream, either as a library, precompiler or any other utility used for
 building a compiled project.
 :::
 
-The best way to consume a project is within CMake, using the
-[`FetchContent`/`find_package` integration]. This will run [`find_package`]
-first to try and import the system installed [packaged] version, and if none is
-available it will git clone the [source] project and include it as
-[`add_subdirectory`]. See the [configuration] section on how to configure the
-included project.
+See the [importing dependencies] section.
 
 ## Other build-system
 
@@ -148,10 +145,9 @@ not, but on the other-hand, such information is used when consuming CMake's
 
 [CMakeUserPreset]: configure/index.md#cmakeuserpresetsjson
 [configuration]: configure/index.md
+[importing dependencies]: configure/import.md#importing-dependencies-in-a-cmake-project
 
 [`find_package`]: inv:cmake:cmake:command#command:find_package
-[`FetchContent`/`find_package` integration]: inv:cmake:std:label#fetchcontent-find_package-integration-examples
-[`add_subdirectory`]: inv:cmake:cmake:command#command:add_subdirectory
 
 [^1]: There is a proposal within CMake to at least unify the dependency backend
       [^2] which would be a pre-requisite for having a unified packaging system

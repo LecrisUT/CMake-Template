@@ -11,6 +11,7 @@ extensions = [
     "breathe",
     "sphinx.ext.intersphinx",
     "sphinx_tippy",
+    "sphinx.ext.todo",
 ]
 
 templates_path = []
@@ -56,3 +57,5 @@ linkcheck_ignore = [
     # pkgs.org gives 402 Client Error: Payment Required
     r"https://pkgs.org",
 ]
+
+todo_include_todos = True
