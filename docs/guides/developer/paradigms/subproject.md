@@ -32,5 +32,5 @@ you do not have such a feature, but this can be done with an external module:
 [`DynamicVersion`]: inv:cmake-extra:std:doc#cmake_modules/DynamicVersion
 [`FetchContent_Declare`]: inv:cmake:cmake:command#command:fetchcontent_declare
 
-[test-suite]: TBD
+[test-suite]: test-suite.md
 [project option]: TBD

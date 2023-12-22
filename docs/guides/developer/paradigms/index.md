@@ -7,4 +7,5 @@
 top-level-cmake
 namespace
 subproject
+test-suite
 ```
