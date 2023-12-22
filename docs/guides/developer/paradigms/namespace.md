@@ -61,7 +61,7 @@ that are in a [`macro`] or [`include`].
 [`macro`]: inv:cmake:cmake:command#command:macro
 [`include`]: inv:cmake:cmake:command#command:include
 
-[`find_package` and `FetchContent`]: TBD
+[`find_package` and `FetchContent`]: export.md#projectconfigcmake-and-fetchcontent
 [project options]: TBD
 
 [^1]: <https://gitlab.kitware.com/cmake/cmake/-/issues/22687>

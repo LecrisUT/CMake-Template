@@ -154,7 +154,7 @@ More details can be found in the [export] section
 [`set(PARENT_SCOPE)`]: inv:cmake:cmake:command#command:set(normal)
 [`FetchContent`]: inv:cmake:cmake:module#module:FetchContent
 
-[export]: TBD
+[export]: export.md
 [project option]: TBD
 [`<PROJECT>_SHARED_LIBS`]: TBD
 [`CMAKE_MESSAGE_CONTEXT`]: namespace.md#message
