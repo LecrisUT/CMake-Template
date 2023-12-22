@@ -157,4 +157,4 @@ More details can be found in the [export] section
 [export]: TBD
 [project option]: TBD
 [`<PROJECT>_SHARED_LIBS`]: TBD
-[`CMAKE_MESSAGE_CONTEXT`]: TBD
+[`CMAKE_MESSAGE_CONTEXT`]: namespace.md#message
