@@ -39,6 +39,7 @@ intersphinx_mapping = {
     "tmt": ("https://tmt.readthedocs.io/en/stable", None),
     "sphinx-tippy": ("https://sphinx-tippy.readthedocs.io/en/latest", None),
     "sphinx-hoverxref": ("https://sphinx-hoverxref.readthedocs.io/en/latest", None),
+    "cmake-extra": ("https://cmakeextrautils.readthedocs.io/en/latest", None),
 }
 
 tippy_rtd_urls = [
@@ -49,6 +50,7 @@ tippy_rtd_urls = [
     "https://tmt.readthedocs.io/en/stable",
     "https://sphinx-tippy.readthedocs.io/en/latest",
     "https://sphinx-hoverxref.readthedocs.io/en/latest",
+    "https://cmakeextrautils.readthedocs.io/en/latest",
 ]
 
 copybutton_exclude = ".linenos, .gp, .go"
