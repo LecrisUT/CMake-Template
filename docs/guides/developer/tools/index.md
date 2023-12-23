@@ -7,4 +7,5 @@
 pre-commit
 github-workflows
 rtd
+packit
 ```
