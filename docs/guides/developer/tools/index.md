@@ -4,4 +4,5 @@
 : maxdepth: 1
 : titlesonly: true
 
+pre-commit
 ```
