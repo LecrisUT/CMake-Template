@@ -33,4 +33,4 @@ you do not have such a feature, but this can be done with an external module:
 [`FetchContent_Declare`]: inv:cmake:cmake:command#command:fetchcontent_declare
 
 [test-suite]: test-suite.md
-[project option]: TBD
+[project option]: options.md

@@ -155,6 +155,6 @@ More details can be found in the [export] section
 [`FetchContent`]: inv:cmake:cmake:module#module:FetchContent
 
 [export]: export.md
-[project option]: TBD
-[`<PROJECT>_SHARED_LIBS`]: TBD
+[project option]: options.md
+[`<PROJECT>_SHARED_LIBS`]: options.md#project_shared_libs
 [`CMAKE_MESSAGE_CONTEXT`]: namespace.md#message

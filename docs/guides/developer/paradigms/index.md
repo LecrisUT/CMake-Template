@@ -9,4 +9,5 @@ namespace
 subproject
 test-suite
 export
+options
 ```
