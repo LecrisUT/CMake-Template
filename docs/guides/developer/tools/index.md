@@ -6,4 +6,5 @@
 
 pre-commit
 github-workflows
+rtd
 ```
