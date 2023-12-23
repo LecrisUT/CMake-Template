@@ -9,4 +9,5 @@ github-workflows
 rtd
 packit
 codecov
+sonarcloud
 ```

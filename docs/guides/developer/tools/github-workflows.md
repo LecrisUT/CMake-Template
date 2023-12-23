@@ -56,7 +56,7 @@ A typical project's workflow should contain:
   and to other downstream packaging
 
 [pre-commit]: pre-commit.md
-[sonarcloud]: TBD
+[sonarcloud]: sonarcloud.md
 
 [`alls-green`]: https://github.com/re-actors/alls-green
 [`steps.[*].continue-on-error`]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error
