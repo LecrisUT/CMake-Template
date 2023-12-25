@@ -68,6 +68,9 @@ dependency, or simply disable the feature if it is an [optional dependency].
 
 ### Controlling how dependencies are imported
 
+:::{table}
+: name: dependency-import-options
+
 |                    Option                    | Effect                                                 | Notes                                                                                      |
 |:--------------------------------------------:|:-------------------------------------------------------|:-------------------------------------------------------------------------------------------|
 |            [`CMAKE_PREFIX_PATH`]             | Where to look for system installed package             |                                                                                            |
@@ -76,6 +79,7 @@ dependency, or simply disable the feature if it is an [optional dependency].
 |  [`FETCHCONTENT_SOURCE_DIR_<PACKAGENAME>`]   | Path to package source to use (instead of downloading) | Takes precedence of any other option                                                       |
 | [`CMAKE_REQUIRE_FIND_PACKAGE_<PackageName>`] | Make optional dependency required                      | If dependency is already required via `FetchContent`, it ensure the system package is used |
 | [`CMAKE_DISABLE_FIND_PACKAGE_<PackageName>`] | Disable finding system installed package               |                                                                                            |
+:::
 
 Here `<PackageName>` is the case-sensitive name of the dependency, and
 `<PACKAGENAME>` is the equivalent uppercase name.
