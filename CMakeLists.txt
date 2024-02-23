@@ -1,5 +1,5 @@
 # Minimum version follows the current Ubuntu LTS and RHEL version
-cmake_minimum_required(VERSION 3.20...3.29)
+cmake_minimum_required(VERSION 3.25...3.29)
 
 #[=============================================================================[
 #                           Basic project definition                           #
@@ -12,17 +12,6 @@ project(Template
 		HOMEPAGE_URL https://github.com/LecrisUT/CMake-Template
 		LANGUAGES CXX
 )
-
-# Back-porting to PROJECT_IS_TOP_LEVEL to older cmake
-# TODO: Remove when requiring cmake >= 3.21
-if (NOT DEFINED Template_IS_TOP_LEVEL)
-	if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-		set(PROJECT_IS_TOP_LEVEL ON)
-	else ()
-		set(PROJECT_IS_TOP_LEVEL OFF)
-	endif ()
-	set(Template_IS_TOP_LEVEL ${PROJECT_IS_TOP_LEVEL})
-endif ()
 
 # Specify C++ standard used in the project.
 set(CMAKE_CXX_STANDARD 17)
@@ -157,20 +146,11 @@ endif ()
 # Make project available for FetchContent
 if(NOT PROJECT_IS_TOP_LEVEL)
 	# Propagate variables
-	if (CMAKE_VERSION VERSION_LESS 3.25)
-		# TODO: Remove when cmake 3.25 is commonly distributed
-		set(Template_VERSION ${Template_VERSION} PARENT_SCOPE)
-		set(Template_VERSION_MAJOR ${Template_VERSION_MAJOR} PARENT_SCOPE)
-		set(Template_VERSION_MINOR ${Template_VERSION_MINOR} PARENT_SCOPE)
-		set(Template_VERSION_PATCH ${Template_VERSION_PATCH} PARENT_SCOPE)
-		set(Template_VERSION_TWEAK ${Template_VERSION_TWEAK} PARENT_SCOPE)
-	else ()
-		return(PROPAGATE
-				Template_VERSION
-				Template_VERSION_MAJOR
-				Template_VERSION_MINOR
-				Template_VERSION_PATCH
-				Template_VERSION_TWEAK
-		)
-	endif ()
+	return(PROPAGATE
+			Template_VERSION
+			Template_VERSION_MAJOR
+			Template_VERSION_MINOR
+			Template_VERSION_PATCH
+			Template_VERSION_TWEAK
+	)
 endif ()
