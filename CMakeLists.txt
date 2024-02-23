@@ -38,10 +38,8 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # Include basic tools
 include(FetchContent)
-if (TEMPLATE_INSTALL)
-	include(CMakePackageConfigHelpers)
-	include(GNUInstallDirs)
-endif ()
+include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
 
 # Define basic parameters
 if (NOT CMAKE_BUILD_TYPE)
