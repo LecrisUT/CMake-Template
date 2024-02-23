@@ -1,12 +1,5 @@
 # Minimum version follows the current Ubuntu LTS and RHEL version
-cmake_minimum_required(VERSION 3.20)
-# CMake version compatibility. This allows to future-proof implementations and easily update
-# when bumping cmake_minimum_required
-# Enable using return(PROPAGATE)
-# TODO: Remove when cmake 3.25 is commonly distributed
-if (POLICY CMP0140)
-	cmake_policy(SET CMP0140 NEW)
-endif ()
+cmake_minimum_required(VERSION 3.20...3.29)
 
 #[=============================================================================[
 #                           Basic project definition                           #
@@ -58,9 +51,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(FetchContent)
 if (TEMPLATE_INSTALL)
 	include(CMakePackageConfigHelpers)
-	if (UNIX)
-		include(GNUInstallDirs)
-	endif ()
+	include(GNUInstallDirs)
 endif ()
 
 # Define basic parameters
