@@ -18,11 +18,7 @@ target_include_directories(Template_Template PUBLIC
 )
 
 if (TEMPLATE_INSTALL)
-	install(TARGETS Template_Hello
-			EXPORT TemplateTargets
-			RUNTIME COMPONENT Template_Runtime
-	)
-	install(TARGETS Template_Template
+	install(TARGETS Template_Template Template_Hello
 			EXPORT TemplateTargets
 			LIBRARY COMPONENT Template_Runtime NAMELINK_COMPONENT Template_Development
 			ARCHIVE COMPONENT Template_Development
