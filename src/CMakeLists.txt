@@ -16,6 +16,11 @@ target_include_directories(Template_Template PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
+if (TARGET fmt)
+	set_target_properties(fmt PROPERTIES
+			POSITION_INDEPENDENT_CODE True
+	)
+endif ()
 
 if (TEMPLATE_INSTALL)
 	install(TARGETS Template_Template Template_Hello

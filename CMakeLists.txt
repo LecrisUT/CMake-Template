@@ -45,12 +45,18 @@ include(GNUInstallDirs)
 if (NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Release)
 endif ()
-set(BUILD_SHARED_LIBS ${TEMPLATE_SHARED_LIBS})
 
 #[=============================================================================[
 #                              External packages                              #
 ]=============================================================================]
 
+# Make sure dependencies are built statically if taken from FetchContent
+if (TEMPLATE_SHARED_LIBS)
+	set(FMT_INSTALL OFF)
+	set(BUILD_SHARED_LIBS OFF)
+else ()
+	set(FMT_INSTALL OFF)
+endif ()
 FetchContent_Declare(fmt
 		GIT_REPOSITORY https://github.com/fmtlib/fmt
 		GIT_TAG master
@@ -58,6 +64,7 @@ FetchContent_Declare(fmt
 )
 
 FetchContent_MakeAvailable(fmt)
+set(BUILD_SHARED_LIBS ${TEMPLATE_SHARED_LIBS})
 
 feature_summary(
 		FILENAME ${CMAKE_CURRENT_BINARY_DIR}/Template.info
