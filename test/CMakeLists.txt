@@ -49,7 +49,7 @@ if (NOT Template_IS_TOP_LEVEL)
 endif ()
 FetchContent_Declare(Catch2
 		GIT_REPOSITORY https://github.com/catchorg/Catch2
-		GIT_TAG v3.4.0
+		GIT_TAG v3.7.0
 		FIND_PACKAGE_ARGS CONFIG
 )
 list(APPEND external_libs Catch2)
@@ -146,6 +146,7 @@ foreach (test_type IN ITEMS
 	add_subdirectory(${test_type})
 endforeach ()
 
+set(extra_args)
 set(test_properties
 		# Manually hard-coding labels until upstream support is included
 		# https://github.com/catchorg/Catch2/pull/2690
@@ -157,7 +158,11 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.27)
 	list(APPEND test_properties
 			ENVIRONMENT_MODIFICATION "PATH=path_list_prepend:$<JOIN:$<TARGET_RUNTIME_DLL_DIRS:test-suite>,\;>"
 	)
+	list(APPEND extra_args
+			DL_PATHS "$<TARGET_RUNTIME_DLL_DIRS:test-suite>"
+	)
 endif ()
 catch_discover_tests(test-suite
 		PROPERTIES ${test_properties}
+		${extra_args}
 )
