@@ -121,7 +121,8 @@
       "inherits": [
         "default"
       ],
-      "cleanFirst": true
+      "cleanFirst": true,
+      "verbose": true
     },
     {
       "name": "gcc-ci",
@@ -180,7 +181,8 @@
         "default"
       ],
       "output": {
-        "outputOnFailure": true
+        "outputOnFailure": true,
+        "verbosity": "extra"
       }
     },
     {

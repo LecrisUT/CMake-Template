@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.25...3.29)
 
 #[=============================================================================[
 #                           Basic project definition                           #
@@ -48,8 +48,8 @@ if (NOT Template_IS_TOP_LEVEL)
 	list(APPEND external_libs Template)
 endif ()
 FetchContent_Declare(Catch2
-		GIT_REPOSITORY https://github.com/catchorg/Catch2
-		GIT_TAG v3.4.0
+		GIT_REPOSITORY https://github.com/LecrisUT/Catch2
+		GIT_TAG fix/dl_paths
 		FIND_PACKAGE_ARGS CONFIG
 )
 list(APPEND external_libs Catch2)
@@ -62,6 +62,10 @@ FetchContent_MakeAvailable(${external_libs})
 
 enable_testing()
 include(Catch)
+
+if (WIN32 AND CMAKE_VERSION VERSION_LESS 3.27)
+	message(FATAL_ERROR "Cannot reliably test for windows with CMake < 3.27")
+endif ()
 
 add_executable(test-suite)
 target_link_libraries(test-suite PRIVATE Catch2::Catch2WithMain Template::Template)
@@ -142,8 +146,23 @@ foreach (test_type IN ITEMS
 	add_subdirectory(${test_type})
 endforeach ()
 
-catch_discover_tests(test-suite
+set(extra_args)
+set(test_properties
 		# Manually hard-coding labels until upstream support is included
 		# https://github.com/catchorg/Catch2/pull/2690
-		PROPERTIES LABELS "unit"
+		LABELS "unit"
+)
+if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.27)
+	# Patch DLL path for windows
+	# https://stackoverflow.com/a/77990416
+	list(APPEND test_properties
+			ENVIRONMENT_MODIFICATION "PATH=path_list_prepend:$<JOIN:$<TARGET_RUNTIME_DLL_DIRS:test-suite>,\;>"
+	)
+	list(APPEND extra_args
+			DL_PATHS "$<TARGET_RUNTIME_DLL_DIRS:test-suite>"
+	)
+endif ()
+catch_discover_tests(test-suite
+		PROPERTIES ${test_properties}
+		${extra_args}
 )
