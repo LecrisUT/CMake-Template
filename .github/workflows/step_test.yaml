@@ -12,8 +12,10 @@ permissions:
   contents: read
 
 jobs:
-  tests:
-    name: 🛠️ ${{ matrix.toolchain }}
+  test-toolchains:
+    name: >
+      🛠️ ${{ matrix.toolchain }}
+      ${{ matrix.experimental && '[🧪 Experimental]' || '' }}
     runs-on: ${{ matrix.os || 'ubuntu-latest' }}
     container: ${{ !matrix.os && 'ghcr.io/lecrisut/dev-env:main' || '' }}
     continue-on-error: ${{ matrix.experimental || false }}
@@ -43,4 +45,28 @@ jobs:
         uses: lukka/run-cmake@v10.3
         with:
           workflowPreset: "${{ matrix.toolchain }}-ci"
+        continue-on-error: ${{ matrix.experimental && inputs.mask-experimental}}
+
+  cmake-version:
+    name: >
+      🔨 CMake ${{ matrix.cmake }}
+      ${{ matrix.experimental && '[🧪 Experimental]' || '' }}
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental || false }}
+    strategy:
+      fail-fast: false
+      matrix:
+        cmake: [ "3.25", "latest", "latestrc" ]
+        include:
+          - cmake: latestrc
+            experimental: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: ${{ matrix.cmake }}
+      - name: Run CMake workflow
+        uses: lukka/run-cmake@v10.3
+        with:
+          workflowPreset: gcc-ci
         continue-on-error: ${{ matrix.experimental && inputs.mask-experimental}}
