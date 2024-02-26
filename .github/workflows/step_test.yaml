@@ -46,6 +46,11 @@ jobs:
         with:
           workflowPreset: "${{ matrix.toolchain }}-ci"
         continue-on-error: ${{ matrix.experimental && inputs.mask-experimental}}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.toolchain }}
+          path: cmake-build-*
+        if: always()
 
   cmake-version:
     name: >
