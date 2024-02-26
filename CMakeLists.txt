@@ -6,6 +6,10 @@ cmake_minimum_required(VERSION 3.25...3.29)
 ]=============================================================================]
 
 list(APPEND CMAKE_MESSAGE_CONTEXT Template)
+# Define basic parameters
+if (NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE Release)
+endif ()
 project(Template
 		VERSION 0.1.0
 		DESCRIPTION "CMake project template"
@@ -40,11 +44,6 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(FetchContent)
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
-
-# Define basic parameters
-if (NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE Release)
-endif ()
 
 #[=============================================================================[
 #                              External packages                              #
