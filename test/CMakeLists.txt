@@ -48,8 +48,8 @@ if (NOT Template_IS_TOP_LEVEL)
 	list(APPEND external_libs Template)
 endif ()
 FetchContent_Declare(Catch2
-		GIT_REPOSITORY https://github.com/catchorg/Catch2
-		GIT_TAG v3.4.0
+		GIT_REPOSITORY https://github.com/LecrisUT/Catch2
+		GIT_TAG fix/dl_paths
 		FIND_PACKAGE_ARGS CONFIG
 )
 list(APPEND external_libs Catch2)
