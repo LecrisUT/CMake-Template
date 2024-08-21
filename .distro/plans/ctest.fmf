@@ -4,7 +4,6 @@ prepare:
   - how: install
     package:
       - cmake
-      - rsync
       - gcc-c++
       - git
       - cmake(Catch2)
@@ -12,6 +11,7 @@ prepare:
 
 discover+:
   how: fmf
-  path: test
+  path: .
+  test: /test/ctest
 execute:
   how: tmt

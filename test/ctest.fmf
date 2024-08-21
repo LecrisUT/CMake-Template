@@ -1,4 +1,3 @@
 tag: [ cmake ]
 framework: beakerlib
-path: /
 test: ./test.sh
