@@ -18,7 +18,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 include(CMakeDependentOption)
 include(FeatureSummary)
 
-cmake_dependent_option(TEMPLATE_TEST_COVERAGE "Template: Test with coverage" OFF "TEMPLATE_TESTS;Template_IS_TOP_LEVEL" OFF)
+cmake_dependent_option(TEMPLATE_TEST_COVERAGE "Template: Test with coverage" OFF "Template_IS_TOP_LEVEL" OFF)
 add_feature_info(Coverage TEMPLATE_TEST_COVERAGE "Compile with test coverage")
 mark_as_advanced(TEMPLATE_TEST_COVERAGE)
 
@@ -38,23 +38,16 @@ endif ()
 #                              External packages                              #
 ]=============================================================================]
 
-set(external_libs)
-if (NOT Template_IS_TOP_LEVEL)
-	FetchContent_Declare(Template
-			GIT_REPOSITORY https://github.com/LecrisUT/CMake-Template
-			GIT_TAG main
-			FIND_PACKAGE_ARGS CONFIG
-	)
-	list(APPEND external_libs Template)
+if (NOT TARGET Template::Template)
+	find_package(Template REQUIRED CONFIG)
 endif ()
 FetchContent_Declare(Catch2
 		GIT_REPOSITORY https://github.com/catchorg/Catch2
 		GIT_TAG v3.7.0
 		FIND_PACKAGE_ARGS CONFIG
 )
-list(APPEND external_libs Catch2)
 
-FetchContent_MakeAvailable(${external_libs})
+FetchContent_MakeAvailable(Catch2)
 
 #[=============================================================================[
 #                               Main definition                               #
