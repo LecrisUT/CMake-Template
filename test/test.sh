@@ -8,7 +8,6 @@ rlJournalStart
       rlRun "tmp=\$(mktemp -d)" 0 "Create tmp directory"
 		  rlRun "rsync -rL ./ $tmp" 0 "Copy example project"
       rlRun "pushd $tmp"
-      rlRun "tree" 0 "Show directory tree"
       rlRun "set -o pipefail"
     rlPhaseEnd
 

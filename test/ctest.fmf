@@ -1,11 +1,4 @@
 tag: [ cmake ]
-require:
-  - cmake
-  - rsync
-  - tree
-  - gcc-c++
-  - pkgconf
-  - git
 framework: beakerlib
 path: /
 test: ./test.sh
