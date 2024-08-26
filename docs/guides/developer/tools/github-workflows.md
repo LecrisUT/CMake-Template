@@ -50,13 +50,13 @@ A typical project's workflow should contain:
 - pre-commit checks: calls [pre-commit]
 - main tests: runs the main ctest
 - doc tests: runs other sphinx builders, e.g. `linkcheck`, `html -W`
-- static-analysis: in this template it is [sonarcloud]
+- static-analysis: in this template it is [Qodana]
 - code coverage: re-runs each subset of tests with coverage
 - release workflow: re-runs the CI tests, and publishes the release to GitHub
   and to other downstream packaging
 
 [pre-commit]: pre-commit.md
-[sonarcloud]: sonarcloud.md
+[Qodana]: qodana.md
 
 [`alls-green`]: https://github.com/re-actors/alls-green
 [`steps.[*].continue-on-error`]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error

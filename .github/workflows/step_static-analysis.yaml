@@ -3,35 +3,17 @@ name: static-analysis
 on:
   workflow_call:
     secrets:
-      SONAR_TOKEN:
+      QODANA_TOKEN:
         required: true
 
 jobs:
-  sonar-cloud:
-    name: SonarCloud
+  qodana:
+    name: Qodana
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: WyriHaximus/github-action-get-previous-tag@v1
-        id: git-tag
-        with:
-         prefix: v
-      - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-c-cpp@v2
-      - uses: lukka/get-cmake@latest
-      - name: Run CMake configuration for ${{ matrix.toolchain }} toolchain
-        uses: lukka/run-cmake@v10.3
-        with:
-          workflowPreset: coverage-all
-      - name: Convert output to sonarqube
-        run: pipx run gcovr --sonarqube > coverage.xml
-      - name: Run sonar-scanner
+      - uses: JetBrains/qodana-action@v2024.1
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: >
-          sonar-scanner
-          --define sonar.cfamily.compile-commands=$(echo cmake-build-*)/compile_commands.json
-          --define sonar.coverageReportPaths=coverage.xml
-          --define sonar.projectVersion=${{ steps.git-tag.outputs.tag }}
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}

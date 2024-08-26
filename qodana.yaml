@@ -1,0 +1,10 @@
+version: "1.0"
+profile:
+  name: qodana.recommended
+exclude:
+  - name: All
+    paths:
+      - build/_deps
+linter: jetbrains/qodana-clang:latest
+bootstrap: |
+  cmake --preset default -B ./build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

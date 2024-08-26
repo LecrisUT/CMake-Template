@@ -9,6 +9,6 @@ github-workflows
 rtd
 packit
 codecov
-sonarcloud
+qodana
 tmt
 ```

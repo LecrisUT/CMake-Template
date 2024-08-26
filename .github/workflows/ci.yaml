@@ -44,7 +44,7 @@ jobs:
     needs: [ pre-commit ]
     uses: ./.github/workflows/step_static-analysis.yaml
     secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
     if: github.event_name != 'schedule'
 
   pass:
