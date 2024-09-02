@@ -1,7 +1,7 @@
 include_guard(GLOBAL)
 
 include(FindPackageHandleStandardArgs)
-find_package(PkgConfig REQUIRED)
+find_package(PkgConfig)
 
 macro(Template_FindPackage name)
 	#[===[.md
@@ -87,7 +87,7 @@ macro(Template_FindPackage name)
 		find_package_handle_standard_args(${name}
 				CONFIG_MODE HANDLE_COMPONENTS
 		)
-	else ()
+	elseif (PkgConfig_FOUND)
 		# Try pkg-config next
 		# Construct the moduleSpec to search for
 		if (NOT DEFINED ARGS_PKG_MODULE_SPECS)
