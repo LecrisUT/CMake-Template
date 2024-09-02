@@ -28,8 +28,8 @@ Disregarding the most of the paradigms for the sake of brevity, the project
 files would look like this:
 
 ```{code-block} cmake
-: caption: CMakeLists.txt
-: emphasize-lines: 9-17,25-33
+:caption: CMakeLists.txt
+:emphasize-lines: 9-17,25-33
 
 option(EXAMPLE_EXECUTABLE "Build the say-hello executable" OFF)
 
@@ -75,8 +75,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ExampleConfig.cmake
 )
 ```
 ```{code-block}
-: caption: ExampleConfig.cmake.in
-: emphasize-lines: 3-6
+:caption: ExampleConfig.cmake.in
+:emphasize-lines: 3-6
 
 @PACKAGE_INIT@
 
@@ -109,8 +109,8 @@ exported appropriately.
 
 
 ```{code-block} cmake
-: caption: CMakeLists.txt
-: emphasize-lines: 2,6-10
+:caption: CMakeLists.txt
+:emphasize-lines: 2,6-10
 
 add_library(hello)
 add_library(Example::hello ALIAS hello)
@@ -141,6 +141,6 @@ Make sure that [`<Project>_VERSION`] and its equivalents are exported
 [`find_package`]: inv:cmake:cmake:command#command:find_package
 [`install(TARGETS)`]: inv:cmake:cmake:command#command:install(targets)
 [`install(EXPORT)`]: inv:cmake:cmake:command#command:install(export)
-[`export(EXPORT)`]: inv:cmake:std:label#export(export)
+[`export(EXPORT)`]: inv:cmake:cmake:command#command:export
 [`<Project>Config.cmake`]: <inv:cmake:std:label#full signature>
 [`<Project>_VERSION`]: inv:cmake:cmake:variable#variable:<PROJECT-NAME>_VERSION

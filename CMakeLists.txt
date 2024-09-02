@@ -1,12 +1,5 @@
 # Minimum version follows the current Ubuntu LTS and RHEL version
-cmake_minimum_required(VERSION 3.20)
-# CMake version compatibility. This allows to future-proof implementations and easily update
-# when bumping cmake_minimum_required
-# Enable using return(PROPAGATE)
-# TODO: Remove when cmake 3.25 is commonly distributed
-if (POLICY CMP0140)
-	cmake_policy(SET CMP0140 NEW)
-endif ()
+cmake_minimum_required(VERSION 3.25...3.29)
 
 #[=============================================================================[
 #                           Basic project definition                           #
@@ -19,17 +12,6 @@ project(Template
 		HOMEPAGE_URL https://github.com/LecrisUT/CMake-Template
 		LANGUAGES CXX
 )
-
-# Back-porting to PROJECT_IS_TOP_LEVEL to older cmake
-# TODO: Remove when requiring cmake >= 3.21
-if (NOT DEFINED Template_IS_TOP_LEVEL)
-	if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-		set(PROJECT_IS_TOP_LEVEL ON)
-	else ()
-		set(PROJECT_IS_TOP_LEVEL OFF)
-	endif ()
-	set(Template_IS_TOP_LEVEL ${PROJECT_IS_TOP_LEVEL})
-endif ()
 
 # Specify C++ standard used in the project.
 set(CMAKE_CXX_STANDARD 17)
@@ -56,23 +38,20 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # Include basic tools
 include(FetchContent)
-if (TEMPLATE_INSTALL)
-	include(CMakePackageConfigHelpers)
-	if (UNIX)
-		include(GNUInstallDirs)
-	endif ()
-endif ()
-
-# Define basic parameters
-if (NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE Release)
-endif ()
-set(BUILD_SHARED_LIBS ${TEMPLATE_SHARED_LIBS})
+include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
 
 #[=============================================================================[
 #                              External packages                              #
 ]=============================================================================]
 
+# Make sure dependencies are built statically if taken from FetchContent
+if (TEMPLATE_SHARED_LIBS)
+	set(FMT_INSTALL OFF)
+	set(BUILD_SHARED_LIBS OFF)
+else ()
+	set(FMT_INSTALL OFF)
+endif ()
 FetchContent_Declare(fmt
 		GIT_REPOSITORY https://github.com/fmtlib/fmt
 		GIT_TAG master
@@ -80,6 +59,7 @@ FetchContent_Declare(fmt
 )
 
 FetchContent_MakeAvailable(fmt)
+set(BUILD_SHARED_LIBS ${TEMPLATE_SHARED_LIBS})
 
 feature_summary(
 		FILENAME ${CMAKE_CURRENT_BINARY_DIR}/Template.info
@@ -166,20 +146,11 @@ endif ()
 # Make project available for FetchContent
 if(NOT PROJECT_IS_TOP_LEVEL)
 	# Propagate variables
-	if (CMAKE_VERSION VERSION_LESS 3.25)
-		# TODO: Remove when cmake 3.25 is commonly distributed
-		set(Template_VERSION ${Template_VERSION} PARENT_SCOPE)
-		set(Template_VERSION_MAJOR ${Template_VERSION_MAJOR} PARENT_SCOPE)
-		set(Template_VERSION_MINOR ${Template_VERSION_MINOR} PARENT_SCOPE)
-		set(Template_VERSION_PATCH ${Template_VERSION_PATCH} PARENT_SCOPE)
-		set(Template_VERSION_TWEAK ${Template_VERSION_TWEAK} PARENT_SCOPE)
-	else ()
-		return(PROPAGATE
-				Template_VERSION
-				Template_VERSION_MAJOR
-				Template_VERSION_MINOR
-				Template_VERSION_PATCH
-				Template_VERSION_TWEAK
-		)
-	endif ()
+	return(PROPAGATE
+			Template_VERSION
+			Template_VERSION_MAJOR
+			Template_VERSION_MINOR
+			Template_VERSION_PATCH
+			Template_VERSION_TWEAK
+	)
 endif ()
