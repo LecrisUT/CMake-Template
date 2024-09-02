@@ -20,15 +20,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: lukka/get-cmake@latest
-      - name: Run CMake configuration for ${{ matrix.toolchain }} toolchain
-        uses: lukka/run-cmake@v10.3
+      - uses: lukka/run-cmake@v10.3
         with:
           workflowPreset: coverage-${{ matrix.coverage }}
-      - name: Get lcov data
-        uses: danielealbano/lcov-action@v3
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+      - uses: threeal/gcovr-action@xml-out
+        with:
+          xml-out: coverage.xml
+      - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage.info
+          files: coverage.xml
           flags: ${{ matrix.coverage }}-tests
