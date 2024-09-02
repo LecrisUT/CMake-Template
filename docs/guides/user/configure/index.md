@@ -1,9 +1,9 @@
 # Configuring the project
 
 ```{toctree}
-: maxdepth: 1
-: titlesonly: true
-: hidden: true
+:maxdepth: 1
+:titlesonly: true
+:hidden: true
 
 options
 import
@@ -98,8 +98,8 @@ at compile/build time.
 
 :::{admonition} Tl;dr
 ```{code-block} json
-: emphasize-lines: 9-11
-: caption: CMakeUserPresets.json
+:emphasize-lines: 9-11
+:caption: CMakeUserPresets.json
 
 {
   "version": 6,

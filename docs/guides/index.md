@@ -1,8 +1,8 @@
 # Guides
 
 ```{toctree}
-: maxdepth: 2
-: titlesonly: true
+:maxdepth: 2
+:titlesonly: true
 
 user/index
 developer/index
@@ -31,8 +31,8 @@ to it using [inter-sphinx]. For example, include the following configurations
 to your `docs/conf.py` file:
 
 ```{code-block} python
-: caption: docs/conf.py
-: emphasize-lines: 5
+:caption: docs/conf.py
+:emphasize-lines: 5
 
 extensions = [
     "sphinx.ext.intersphinx",
@@ -53,8 +53,8 @@ Then, you can use it in your documentation files as follows:
 ::::{tab-set}
 :::{tab-item} Markdown
 ```{code-block} markdown
-: caption: docs/example.md
-: emphasize-lines: 4
+:caption: docs/example.md
+:emphasize-lines: 4
 
 Refer to the [following guide][template-user-guide] for a basic how-to interact
 with a CMake project...
@@ -64,8 +64,8 @@ with a CMake project...
 :::
 :::{tab-item} reStructuredText
 ```{code-block} rst
-: caption: docs/example.rst
-: emphasize-lines: 1
+:caption: docs/example.rst
+:emphasize-lines: 1
 
 Refer to the :external+template-user-guide:std:doc:`following guide<template-user-guide>`
 for a basic how-to interact with a CMake project...

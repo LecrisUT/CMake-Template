@@ -1,9 +1,9 @@
 # User guide
 
 ```{toctree}
-: maxdepth: 2
-: titlesonly: true
-: hidden: true
+:maxdepth: 2
+:titlesonly: true
+:hidden: true
 
 who-is-the-user
 download

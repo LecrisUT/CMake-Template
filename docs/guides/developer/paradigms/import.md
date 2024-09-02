@@ -56,7 +56,7 @@ order to avoid conflicts with other similarly defined modules.
 If you still need such a module, an example module can look as follows:
 
 ```{code-block} cmake
-: caption: FindExample.cmake
+:caption: FindExample.cmake
 
 set(CMAKE_REQUIRE_FIND_PACKAGE_Example FALSE)
 find_package(Example CONFIG QUIET)

@@ -69,7 +69,7 @@ dependency, or simply disable the feature if it is an [optional dependency].
 ### Controlling how dependencies are imported
 
 :::{table}
-: name: dependency-import-options
+:name: dependency-import-options
 
 |                    Option                    | Effect                                                 | Notes                                                                                      |
 |:--------------------------------------------:|:-------------------------------------------------------|:-------------------------------------------------------------------------------------------|
