@@ -38,6 +38,8 @@ jobs:
     name: 👀 coverage
     needs: [ tests ]
     uses: ./.github/workflows/step_coverage.yaml
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     if: github.event_name != 'schedule'
 
   static-analysis:

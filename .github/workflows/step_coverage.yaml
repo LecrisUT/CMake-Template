@@ -2,6 +2,10 @@ name: 👀 coverage
 
 on:
   workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        description: Codecov token of the main repository
+        required: false
 
 permissions:
   contents: read
@@ -23,7 +27,8 @@ jobs:
       - name: Get lcov data
         uses: danielealbano/lcov-action@v3
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.info
           flags: ${{ matrix.coverage }}-tests
