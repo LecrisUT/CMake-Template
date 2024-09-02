@@ -141,6 +141,6 @@ Make sure that [`<Project>_VERSION`] and its equivalents are exported
 [`find_package`]: inv:cmake:cmake:command#command:find_package
 [`install(TARGETS)`]: inv:cmake:cmake:command#command:install(targets)
 [`install(EXPORT)`]: inv:cmake:cmake:command#command:install(export)
-[`export(EXPORT)`]: inv:cmake:std:label#export(export)
+[`export(EXPORT)`]: inv:cmake:cmake:command#command:export
 [`<Project>Config.cmake`]: <inv:cmake:std:label#full signature>
 [`<Project>_VERSION`]: inv:cmake:cmake:variable#variable:<PROJECT-NAME>_VERSION

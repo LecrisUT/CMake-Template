@@ -148,7 +148,7 @@ More details can be found in the [export] section
 [`configure_file`]: inv:cmake:cmake:command#command:configure_file
 [`write_basic_package_version_file`]: inv:cmake:cmake:command#command:write_basic_package_version_file
 [`configure_package_config_file`]: inv:cmake:cmake:command#command:configure_package_config_file
-[`export(EXPORT)`]: inv:cmake:std:label#export(export)
+[`export(EXPORT)`]: inv:cmake:cmake:command#command:export
 [`<Project>Config.cmake`]: <inv:cmake:std:label#full signature>
 [`return(PROPAGATE)`]: inv:cmake:cmake:command#command:return
 [`set(PARENT_SCOPE)`]: inv:cmake:cmake:command#command:set(normal)
