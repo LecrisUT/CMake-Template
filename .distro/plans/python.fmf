@@ -1,0 +1,21 @@
+summary: Test python integration
+
+prepare:
+  - how: install
+    package:
+      - python3dist(pip)
+      - gcc-c++
+      - cmake
+      - ninja-build
+      # Defining all python dependencies manually here
+      - python3dist(scikit-build-core)
+  - how: shell
+    script: |
+      python3 -m venv --system-site-packages $TMT_PLAN_DATA/venv
+
+discover+:
+  how: fmf
+  path: .
+  filter: "tag:python"
+execute:
+  how: tmt
