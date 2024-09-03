@@ -1,14 +1,13 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["scikit-build-core"]
+build-backend = "scikit_build_core.build"
 
 [project]
-name = "CMake-Template-dev"
-version = "0.0.0"
+name = "CMake-Template"
 description = "Development environment for CMake Template"
 readme = "README.md"
 license = { file = "LICENSE" }
-
+dynamic = ["version"]
 
 [project.optional-dependencies]
 docs = [
@@ -22,9 +21,17 @@ docs = [
     "sphinx-copybutton",
     "sphinx-prompt",
 ]
-dev = [
-    "pre-commit",
-]
 
-[tool.setuptools]
-packages = []
+[project.entry-points."cmake.prefix"]
+CMakeTemplatePrefix = "cmake_template"
+
+[tool.scikit-build]
+wheel.install-dir = "cmake_template"
+
+[tool.scikit-build.metadata.version]
+provider = "scikit_build_core.metadata.regex"
+# Get the project version from the CMakeLists's project()
+input = "CMakeLists.txt"
+regex = '''(?sm)
+^project\s*\(\s*Template\s+.*VERSION\s+(?P<value>[\d\.]+).*\)$
+'''

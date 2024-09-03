@@ -1,3 +1,2 @@
+summary: Run the bundled ctests
 tag: [ cmake ]
-framework: beakerlib
-test: ./test.sh
